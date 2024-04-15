@@ -1,0 +1,70 @@
+<section id="settings">
+  <div class="container p-5">
+    <h4 class="display-4">My Account Settings</h4>
+    <hr>
+    <app-message></app-message>
+    <div *ngIf="!currentSettings" class="m-auto">
+      <h1 class="text-center display-3 mt-5">
+        <i class="fa fa-spinner fa-spin"></i>
+      </h1>
+    </div>
+    <div *ngIf="currentSettings" class="card bg-light">
+      <div class="card-body">
+        <form [formGroup]="settingForm">
+          <div class="form-group">
+            <label class="form-control-label">Name</label>
+            <input type="text" name="name" class="form-control" formControlName="name">
+            <div *ngIf="f.name.touched && f.name.invalid" class="alert-error">
+              <div *ngIf="settingForm.controls['name'].hasError('required')">
+                  <small><b> Name is required.</b></small>
+              </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Email</label>
+            <input type="email" name="email" class="form-control" formControlName="email">
+            <div *ngIf="f.email.touched && f.email.invalid" class="alert-error">
+              <div *ngIf="settingForm.controls['email'].hasError('required')">
+                  <small><b> Email is required.</b></small>
+              </div>
+          </div>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" name="isSeller" class="form-check-input" formControlName="isSeller"> Is Seller
+            </label>
+            <div *ngIf="f.isSeller.touched && f.isSeller.invalid" class="alert-error">
+              <div *ngIf="settingForm.controls['isSeller'].hasError('required')">
+                  <small><b> isSeller is required.</b></small>
+              </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">New Password</label>
+            <input type="password" name="newPwd" class="form-control" formControlName="newPwd" >
+            <div *ngIf="f.newPwd.touched && f.newPwd.invalid" class="alert-error">
+              <div *ngIf="settingForm.controls['newPwd'].hasError('required')">
+                  <small><b> New Password is required.</b></small>
+              </div>
+          </div>
+          </div>
+          <div class="form-group">
+            <label class="form-control-label">Confirm Password</label>
+            <input type="password" name="pwdConfirm" class="form-control" formControlName="pwdConfirm">
+            <div *ngIf="f.pwdConfirm.touched && f.pwdConfirm.invalid" class="alert-error">
+              <div *ngIf="settingForm.controls['pwdConfirm'].hasError('required')">
+                  <small><b> Confirm Password is required.</b></small>
+              </div>
+
+              <div *ngIf="f.pwdConfirm.touched || settingForm.controls['settingForm'].hasError('NoPassswordMatch')">
+                  <small><b>New Password and Confirm Password Should be Same!</b></small>
+              </div>
+          </div>
+          </div>
+          <button type="button" class="btn btn-danger" (click)="update()" [disabled]="!settingForm.valid">Update</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
