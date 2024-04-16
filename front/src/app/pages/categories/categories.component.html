@@ -22,7 +22,7 @@
           <div class="form-group">
             <label>Category</label>
             <!-- [(ngModel)]="newCategory" -->
-            <input type="text" name="newCategory" class="form-control" #newCategory>
+            <input type="text" name="newCategory" class="form-control" #newCategory >
           </div>
           <button type="button" class="btn btn-info" (click)="addCategory(newCategory.value)" [disabled]="btnDisabled">Add Category</button>
         </div>

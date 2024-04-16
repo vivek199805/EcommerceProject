@@ -14,4 +14,7 @@ export var config = {
   getAccountsAddress: {
     url: 'accounts/address',
   },
+  getProduct: {
+    url: 'products',
+  },
 }

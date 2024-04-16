@@ -47,10 +47,6 @@ export class CategoryComponent implements OnInit {
         categoryId:this.categoryId,
         page:this.page - 1
       }
-      // const data:any = await this.rest.post(`http://localhost:3030/api/categorybyId`, payload);
-      // data['success']
-      //   ? (this.category = data)
-      //   : this.data.error(data['message']);
 
         this._AuthService.postdata(payload, config.categorybyId).subscribe((res:any) => {
           if( res['success']){
